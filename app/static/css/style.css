@@ -1,0 +1,25 @@
+.pokemon-card {
+    transition: transform 0.2s;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+}
+
+.stat-row {
+    margin-bottom: 10px;
+}
+
+.stat-name {
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.progress {
+    display: inline-block;
+    width: 200px;
+    height: 20px;
+    vertical-align: middle;
+}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-center mb-4">PokéDex</h1>
+    </div>
+    {% for pokemon in pokemons %}
+    <div class="col-md-4 mb-4">
+        <div class="card pokemon-card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ loop.index }}.png" 
+                 class="card-img-top p-3" alt="{{ pokemon.name }}">
+            <div class="card-body text-center">
+                <h5 class="card-title text-capitalize">{{ pokemon.name }}</h5>
+                <a href="{{ url_for('main.pokemon_detail', name=pokemon.name) }}" 
+                   class="btn btn-primary">Voir détails</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %} 

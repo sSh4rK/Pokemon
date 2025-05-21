@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h2 class="text-center text-capitalize mb-0">{{ pokemon.name }} #{{ pokemon.id }}</h2>
+            </div>
+            <div class="card-body text-center">
+                <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" class="img-fluid pokemon-image">
+                
+                <div class="mt-3">
+                    {% for type in pokemon.types %}
+                    <span class="badge bg-primary me-2 text-capitalize">{{ type }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="mt-4">
+                    <p class="description">{{ pokemon.description }}</p>
+                    <p>Taille: {{ pokemon.height }}m</p>
+                    <p>Poids: {{ pokemon.weight }}kg</p>
+                </div>
+
+                <div class="stats mt-4">
+                    <h4>Statistiques</h4>
+                    {% for stat_name, stat_value in pokemon.stats.items() %}
+                    <div class="stat-row mb-2">
+                        <span class="stat-name text-capitalize">{{ stat_name }}:</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" 
+                                 style="width: {{ (stat_value / 255) * 100 }}%"
+                                 aria-valuenow="{{ stat_value }}" aria-valuemin="0" aria-valuemax="255">
+                                {{ stat_value }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="mt-4">
+                    <button class="btn btn-primary" onclick="playPokemonCry('{{ pokemon.cry_url }}')">
+                        Écouter le cri
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
